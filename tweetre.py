@@ -8,10 +8,10 @@ import time
 
 
 
-consumer_key = "YJlVwDA6MaPqiq7u6RgaxIioa"
-consumer_secret = "hEZBoopTtSo45eTJ3Dab32wvgHacq9KXKMuk60ZXK9vZevzcuT"
-access_token = "1339948336061820930-yyh3VZqeQMncY1WzU5nSchIebC1pFB"
-access_token_secret = "72QN5u3LJPE0UXhLndTeNnL1IOUg3Io31dIfPtTNnQsFd"
+consumer_key = ""
+consumer_secret = ""
+access_token = ""
+access_token_secret = ""
 
 
 
@@ -62,15 +62,16 @@ def link_magic(smple):
 
     return valid
 
-def dalla(tweet):
-    elem = ""
-    cush = re.findall('([\\$].*)', tweet.text)
-    if cush !=[]:
-        for ush in cush:
-            elem += ush+" "
-    else:
-        elem = ""
 
+
+
+def dalla(tweet):
+    try:
+        cz = tweet.entities.get('symbols')
+        for c in cz:
+            elem += "$"+c["text"]+" "
+    except:
+        elem = ""
     return elem
 
 
